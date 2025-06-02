@@ -30,8 +30,8 @@ public class GameManager : MonoBehaviour
     {
         Application.targetFrameRate = 60;
         Pause();
-        countdownText.gameObject.SetActive(false); // —крываем текст отсчета при старте
-        over.SetActive(false); // —крываем Game Over при старте
+        countdownText.gameObject.SetActive(false); 
+        over.SetActive(false); 
     }
 
     public void Play() 
@@ -46,12 +46,7 @@ public class GameManager : MonoBehaviour
         game.SetActive(false);
         over.SetActive(false);
 
-        player.enabled = false; // ќтключаем управление игроком во врем€ отсчета
-
-
-        //Time.timeScale = 1f;
-
-        //player.enabled = true;
+        player.enabled = false; 
 
         foreach (var parallax in parallaxElements)
         {
@@ -59,25 +54,11 @@ public class GameManager : MonoBehaviour
         }
         spawner.spawnRate = 1f;
         nextDifficultyIncreaseTime = Time.time + difficultyIncreaseInterval;
-        
 
-        // —брос игрока
         player.transform.position = Vector3.zero;
         player.ResetPlayer();
 
         StartCoroutine(Countdown());
-
-
-        //-Pipes pipe = FindFirstObjectByType<Pipes>();
-        //if (pipe != null)
-        //{
-        //  Destroy(pipe.gameObject);
-        //}
-
-        //-Pipes[] pipes = FindObjectOfType<Pipes>();
-        //for (int i = 0; i < pipes.Length; i++) {
-        //  Destroy(pipes[i].gameObject); 
-        //}
 
     }
     private IEnumerator Countdown()
@@ -98,7 +79,6 @@ public class GameManager : MonoBehaviour
 
         countdownText.gameObject.SetActive(false);
 
-        // ¬ключаем управление и запускаем игру
         player.enabled = true;
         Time.timeScale = 1f;
     }
