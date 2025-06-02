@@ -28,13 +28,11 @@ public class Spowner : MonoBehaviour
         newPipe.transform.position += Vector3.up * Random.Range(minHeight, maxHeight);
         activePipes.Add(newPipe);
 
-        // Добавляем автоматическое удаление из списка при уничтожении трубы
         PipeDestructionNotifier destructionNotifier = newPipe.AddComponent<PipeDestructionNotifier>();
         destructionNotifier.Initialize(this);
     }
     public void ClearAllPipes()
     {
-        // Удаляем в обратном порядке, чтобы избежать проблем с индексами
         for (int i = activePipes.Count - 1; i >= 0; i--)
         {
             if (activePipes[i] != null)
